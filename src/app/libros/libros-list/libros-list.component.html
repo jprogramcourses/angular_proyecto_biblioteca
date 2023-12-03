@@ -1,0 +1,24 @@
+<div class="container mt-5">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Título</th>
+        <th scope="col">Autor</th>
+        <th scope="col">Año</th>
+        <th scope="col">Género</th>
+        <th scope="col">Editorial</th>
+        <th scope="col">Páginas</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let libro of libros">
+          <td><a routerLink="/libro/{{ libro.titulo }}">{{ libro.titulo }}</a></td>
+          <td>{{ libro.autor }}</td>
+          <td>{{ libro.anhoPublicacion }}</td>
+          <td>{{ libro.genero }}</td>
+          <td>{{ libro.editorial }}</td>
+          <td>{{ libro.paginas }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
