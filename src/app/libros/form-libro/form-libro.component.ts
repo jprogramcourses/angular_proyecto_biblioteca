@@ -23,7 +23,11 @@ export class FormLibroComponent implements OnInit {
     this.libroForm = this.fb.group({
       titulo: ['', [Validators.required]],
       autor: [''],
-      genero: ['', Validators.minLength(2)]
+      genero: ['', Validators.minLength(2)],
+      paginas: [''],
+      editorial: [''],
+      anhoPublicacion: [''],
+      imagen: ['']
     });
   }
 
@@ -42,8 +46,8 @@ export class FormLibroComponent implements OnInit {
     console.log(form);
     console.log('Título: ', form.get('titulo').value);
     
-    const newLibro = new Libro('x', form.get('titulo').value, new Autor('Paco'), form.get('genero').value, 1, '', 3, '');
-    this.libroService.createLibro(form);
+    const newLibro = new Libro('x', form.get('titulo').value, new Autor(form.get('autor').value), form.get('genero').value, form.get('paginas').value, form.get('editorial').value, form.get('anhoPublicacion').value, form.get('imagen').value);
+    this.libroService.createLibro(newLibro);
   }
 
 }

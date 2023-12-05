@@ -5,10 +5,16 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatButtonModule} from '@angular/material/button';
 import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
 import {MatTableDataSource, MatTableModule} from '@angular/material/table';
+import { ConfirmationButtonDirective } from './confirmation/confirmation-button.directive';
+
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    
+  
+    ConfirmationButtonDirective
+  ],
   imports: [
     CommonModule
   ],

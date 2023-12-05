@@ -9,12 +9,7 @@
         placeholder="Título"
         formControlName="titulo"
       />
-      <div
-        *ngIf="
-          libroForm.get('titulo')?.hasError('required') &&
-          !libroForm.get('titulo')?.pristine
-        "
-      >
+      <div *ngIf="libroForm.get('titulo')?.hasError('required') && !libroForm.get('titulo')?.pristine">
         <p>Error en el título</p>
       </div>
     </div>
@@ -32,7 +27,7 @@
 
     <div class="form-group g-3">
       <label for="genero">Género</label>
-      <select class="form-control" id="genero">
+      <select class="form-control" id="genero" formControlName="genero">
         <option></option>
         <option>Novela</option>
         <option>Historia</option>
@@ -44,19 +39,19 @@
     </div>
     <div class="form-group">
       <label for="editorial">Editorial</label>
-      <input
-        type="text"
-        class="form-control"
-        id="editorial"
-        placeholder="Editorial"
-      />
+      <input type="text" class="form-control" id="editorial" placeholder="Editorial" formControlName="editorial" />
     </div>
     <div class="form-group">
       <label for="paginas">Páginas</label>
-      <input type="number" class="form-control" id="paginas" placeholder="1" />
+      <input type="number" class="form-control" id="paginas" placeholder="1" formControlName="paginas" />
     </div>
 
     <div class="form-group">
+      <label for="anhoPublicacion">Año publicación</label>
+      <input type="number" class="form-control" id="anhoPublicacion" placeholder="1900" formControlName="anhoPublicacion" />
+    </div>
+
+    <!-- <div class="form-group">
       <label for="exampleFormControlSelect2">Example multiple select</label>
       <select multiple class="form-control" id="exampleFormControlSelect2">
         <option>1</option>
@@ -142,13 +137,9 @@
       <label class="form-check-label" for="exampleRadios3">
         Disabled radio
       </label>
-    </div>
-    <button
-      type="submit"
-      class="btn btn-primary"
-      [disabled]="libroForm.invalid"
-    >
-      Submit
+    </div> -->
+    <button type="submit" class="btn btn-primary" [disabled]="libroForm.invalid" >
+      Crear
     </button>
   </form>
 </div>
