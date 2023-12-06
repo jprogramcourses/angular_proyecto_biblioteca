@@ -6,6 +6,7 @@ import { FooterComponent } from './footer/footer.component';
 import { SharedModule } from '../shared/shared.module';
 import { RouterModule } from '@angular/router';
 import { LibrosModule } from '../libros/libros.module';
+import { LoginModule } from '../login/login.module';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { LibrosModule } from '../libros/libros.module';
     CommonModule,
     SharedModule,
     RouterModule,
-    LibrosModule
+    LibrosModule,
+    LoginModule
   ],
   exports: [
     HeaderComponent,

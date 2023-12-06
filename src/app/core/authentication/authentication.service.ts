@@ -22,7 +22,7 @@ export class AuthenticationService {
 
   login(data: {email: string, password: string}): Observable<any>{
     return this.httpClient.post<any>(
-      `${environment.authURL}/authenticate`,
+      this.urlAuthenticate,
       data).pipe(
         tap((data: any) => data),
         catchError(err => throwError(() => err))

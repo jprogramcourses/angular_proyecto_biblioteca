@@ -5,8 +5,8 @@ import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
-import { LibrosRoutingModule } from './libros/libros-routing.module';
 import { ErrorComponent } from './error/error.component';
+import { LoginModule } from './login/login.module';
 
 @NgModule({
   declarations: [
@@ -18,7 +18,7 @@ import { ErrorComponent } from './error/error.component';
     CoreModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    LibrosRoutingModule
+    LoginModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -9,8 +9,7 @@ const libroRoutes: Routes = [
     {path: '', component: LibrosListComponent},
     {path: 'libros', component: LibrosListComponent},
     {path: 'libro/:titulo', component: LibroDetalleComponent},
-    { path: 'nuevolibro', component: FormLibroComponent},
-    { path: '**', component: ErrorComponent}
+    { path: 'nuevolibro', component: FormLibroComponent}
 ];
 
 @NgModule({
