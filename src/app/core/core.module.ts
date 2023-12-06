@@ -7,6 +7,7 @@ import { SharedModule } from '../shared/shared.module';
 import { RouterModule } from '@angular/router';
 import { LibrosModule } from '../libros/libros.module';
 import { LoginModule } from '../login/login.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { LoginModule } from '../login/login.module';
     SharedModule,
     RouterModule,
     LibrosModule,
-    LoginModule
+    LoginModule,
+    HttpClientModule
   ],
   exports: [
     HeaderComponent,

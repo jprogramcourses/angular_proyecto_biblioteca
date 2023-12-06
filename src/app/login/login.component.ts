@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
   userExists: boolean = false;
 
   constructor(
-    // private authService: AuthenticationService
+    private authService: AuthenticationService
   ){}
 
   ngOnInit(): void {
