@@ -11,8 +11,8 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let libro of libros">
-          <td><a routerLink="/libro/{{ libro.titulo }}">{{ libro.titulo }}</a></td>
+      <tr (click)="selectLibro(libro)" *ngFor="let libro of libros">
+          <td>{{ libro.titulo }}</td>
           <td>{{ libro.autor }}</td>
           <td>{{ libro.anhoPublicacion }}</td>
           <td>{{ libro.genero }}</td>

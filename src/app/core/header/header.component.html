@@ -4,4 +4,10 @@
   <button mat-menu-item routerLink="nuevolibro">Nuevo libro</button>
 </mat-menu>
 
+<button mat-button [matMenuTriggerFor]="login">Sesión</button>
+<mat-menu #login="matMenu" >
+  <button mat-menu-item routerLink="login">Iniciar sesión</button>
+  <button mat-menu-item routerLink="nuevolibro">Cerrar sesión</button>
+</mat-menu>
+
 <router-outlet></router-outlet>
