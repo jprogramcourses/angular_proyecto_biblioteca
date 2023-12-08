@@ -11,18 +11,21 @@ export class LoginComponent implements OnInit {
 
   titulo: string = 'Iniciar sesión';
 
+  loginForm: FormGroup;
+
   // userForm!: FormGroup;
   userExists: boolean = false;
 
   constructor(
+    private fb: FormBuilder,
     private authService: AuthenticationService
   ){}
 
   ngOnInit(): void {
-    // this.userForm = this.fb.group({
-    //   email: ['', Validators.required],
-    //   password: ['', Validators.required]
-    // })
+    this.loginForm = this.fb.group({
+      email: ['', Validators.required],
+      password: ['', Validators.required]
+    })
   }
 
   logIn(form: any){

@@ -8,12 +8,14 @@ import { RouterModule } from '@angular/router';
 import { LibrosModule } from '../libros/libros.module';
 import { LoginModule } from '../login/login.module';
 import { HttpClientModule } from '@angular/common/http';
+import { UsuariosComponent } from './usuarios/usuarios.component';
 
 @NgModule({
   declarations: [
     HeaderComponent,
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
+    UsuariosComponent
   ],
   imports: [
     CommonModule,

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 
-import { Observable, throwError } from 'rxjs';
+import { Observable, of, throwError } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 
 @Injectable({
@@ -21,12 +21,15 @@ export class AuthenticationService {
   ) { }
 
   login(data: {email: string, password: string}): Observable<any>{
-    return this.httpClient.post<any>(
-      this.urlAuthenticate,
-      data).pipe(
-        tap((data: any) => data),
-        catchError(err => throwError(() => err))
-      )
+    // return this.httpClient.post<any>(
+    //   this.urlAuthenticate,
+    //   data).pipe(
+    //     tap((data: any) => data),
+    //     catchError(err => throwError(() => err))
+    //   )
+
+    return of("token");
+
   }
 
 
