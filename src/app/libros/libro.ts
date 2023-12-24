@@ -8,16 +8,18 @@ export class Libro {
     private _genero: string;
     private _paginas: number;
     private _editorial: string;
+    private _descripcion: string;
     private _anhoPublicacion: number;
     private _imagen: string;
 
-    constructor(id: string, titulo: string, autor: Autor, genero: string, paginas: number, editorial: string, anhoPublicacion: number, imagen: string){
+    constructor(id: string, titulo: string, autor: Autor, genero: string, paginas: number, editorial: string, descripcion: string, anhoPublicacion: number, imagen: string){
         this._id = id;
         this._titulo = titulo;
         this._autor = autor;
         this._genero = genero;
         this._paginas = paginas;
         this._editorial = editorial;
+        this._descripcion = descripcion;
         this._anhoPublicacion = anhoPublicacion;
         this._imagen = imagen;
     }
@@ -58,6 +60,12 @@ export class Libro {
     }
     public set editorial(value: string) {
         this._editorial = value;
+    }
+    public get descripcion(): string {
+        return this._descripcion;
+    }
+    public set descripcion(value: string) {
+        this._descripcion = value;
     }
     public get anhoPublicacion(): number {
         return this._anhoPublicacion;

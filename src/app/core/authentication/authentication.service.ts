@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 
 import { Observable, of, throwError } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
+import { UsuariosService } from '../usuarios/usuarios.service';
 
 @Injectable({
   providedIn: 'root'
@@ -17,10 +18,17 @@ export class AuthenticationService {
 
   constructor(
     private router: Router,
-    private httpClient: HttpClient
+    private httpClient: HttpClient,
+    private usuarioService: UsuariosService
   ) { }
 
   login(data: {email: string, password: string}): Observable<any>{
+    this.usuarioService.getUsuarioByEmail(data.email).subscribe(response => {
+      console.log('Respuesta de login');
+      console.log(response);
+      return of(response);
+    });
+
     // return this.httpClient.post<any>(
     //   this.urlAuthenticate,
     //   data).pipe(

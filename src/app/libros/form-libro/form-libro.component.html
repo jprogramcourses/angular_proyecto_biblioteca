@@ -14,7 +14,7 @@
       </div>
     </div>
 
-    <div class="form-group">
+    <div class="col-12">
       <label for="autor">Autor</label>
       <input
         type="text"
@@ -42,14 +42,27 @@
       <input type="text" class="form-control" id="editorial" placeholder="Editorial" formControlName="editorial" />
     </div>
     <div class="form-group">
-      <label for="paginas">Páginas</label>
-      <input type="number" class="form-control" id="paginas" placeholder="1" formControlName="paginas" />
+      <label for="descripcon">Descripcion</label>
+      <textarea rows="7" class="form-control" id="descripcion" placeholder="Descripción" formControlName="descripcion"></textarea>
     </div>
 
-    <div class="form-group">
-      <label for="anhoPublicacion">Año publicación</label>
-      <input type="number" class="form-control" id="anhoPublicacion" placeholder="1900" formControlName="anhoPublicacion" />
+    
+    <div class="row g-3">
+      <div class="col-md-2">
+        <label for="paginas">Páginas</label>
+        <input type="number" class="form-control" id="paginas" placeholder="1" formControlName="paginas" />
+      </div>
+      <div class="col-md-2">
+        <label for="anhoPublicacion">Año publicación</label>
+        <input type="number" class="form-control" id="anhoPublicacion" placeholder="1900" formControlName="anhoPublicacion" />
+      </div>
+      <div class="col-md-8">
+        <label for="portada">Portada</label>
+        <input type="file" class="form-control" id="portada" placeholder="imagen portada" formControlName="imagen" />
+      </div>
     </div>
+
+    
 
     <!-- <div class="form-group">
       <label for="exampleFormControlSelect2">Example multiple select</label>
@@ -138,7 +151,7 @@
         Disabled radio
       </label>
     </div> -->
-    <button type="submit" class="btn btn-primary" [disabled]="libroForm.invalid" >
+    <button type="submit" class="btn btn-primary mt-3 float-end" [disabled]="libroForm.invalid" >
       Crear
     </button>
   </form>

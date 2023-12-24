@@ -26,6 +26,7 @@ export class FormLibroComponent implements OnInit {
       genero: ['', Validators.minLength(2)],
       paginas: [''],
       editorial: [''],
+      descripcion: [''],
       anhoPublicacion: [''],
       imagen: ['']
     });
@@ -46,7 +47,7 @@ export class FormLibroComponent implements OnInit {
     console.log(form);
     console.log('Título: ', form.get('titulo').value);
     
-    const newLibro = new Libro('x', form.get('titulo').value, new Autor(form.get('autor').value), form.get('genero').value, form.get('paginas').value, form.get('editorial').value, form.get('anhoPublicacion').value, form.get('imagen').value);
+    const newLibro = new Libro('x', form.get('titulo').value, new Autor(form.get('autor').value), form.get('genero').value, form.get('paginas').value, form.get('editorial').value, form.get('descripcion'), form.get('anhoPublicacion').value, form.get('imagen').value);
     this.libroService.createLibro(newLibro);
   }
 

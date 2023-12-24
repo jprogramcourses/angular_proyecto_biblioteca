@@ -1,0 +1,28 @@
+<!-- Slider main container -->
+<div class="swiper">
+  <!-- Additional required wrapper -->
+  <div class="swiper-wrapper">
+    <!-- Slides -->
+    <div class="swiper-slide" *ngFor="let libro of libros" 
+      [ngStyle]="{
+        'background-size': 'cover',
+        'background-image': ''
+      }">
+      <div class="libro-description">
+        <h3>{{libro.titulo}}</h3>
+        <p>
+          {{libro.descripcion | slice:0:130}}...
+        </p>
+      </div>
+    </div>
+    <!-- If we need pagination -->
+    <div class="swiper-pagination"></div>
+
+    <!-- If we need navigation buttons -->
+    <div (click)="onSlidePrev()" class="swiper-button-prev"></div>
+    <div (click)="onSlideNext()" class="swiper-button-next"></div>
+
+    <!-- If we need scrollbar -->
+    <div class="swiper-scrollbar"></div>
+  </div>
+</div>
