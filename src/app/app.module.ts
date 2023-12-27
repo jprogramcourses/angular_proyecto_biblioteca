@@ -7,11 +7,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { ErrorComponent } from './error/error.component';
 import { LoginModule } from './login/login.module';
+import { EditorialComponent } from './editorial/editorial.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ErrorComponent
+    ErrorComponent,
+    EditorialComponent
   ],
   imports: [
     BrowserModule,

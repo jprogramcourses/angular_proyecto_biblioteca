@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { LibrosService } from '../libros-service.service';
 import { Libro } from '../libro';
 import { Router } from '@angular/router';
+import { from } from 'rxjs';
 
 @Component({
   selector: 'app-libros-list',
@@ -10,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class LibrosListComponent implements OnInit {
 
-  libros: Libro[];
+  librosList: Libro[] = [];
 
   constructor(
     private libroService: LibrosService,
@@ -18,7 +19,11 @@ export class LibrosListComponent implements OnInit {
   ){}
 
   ngOnInit(): void {
-    this.libros = this.libroService.getLibros();
+    this.libroService.getLibros().subscribe(libros => {
+      from(libros).subscribe(libro => {
+        this.librosList.push(libro);
+      })
+    })
   }
 
   selectLibro(libro: Libro){

@@ -4,24 +4,23 @@ export class Libro {
 
     private _id: string;
     private _titulo: string;
-    private _autor: Autor;
-    private _genero: string;
+    private _anhoPublicacion: number;
     private _paginas: number;
+    private _createdAt: string;
+    private _lastModified: string;
+    private _autores: Autor[];
+    private _genero: string;
     private _editorial: string;
     private _descripcion: string;
-    private _anhoPublicacion: number;
-    private _imagen: string;
+    private _portada: string;
 
-    constructor(id: string, titulo: string, autor: Autor, genero: string, paginas: number, editorial: string, descripcion: string, anhoPublicacion: number, imagen: string){
-        this._id = id;
+    constructor(titulo: string, genero: string, paginas: number, descripcion: string, anhoPublicacion: number, portada: string){
         this._titulo = titulo;
-        this._autor = autor;
         this._genero = genero;
         this._paginas = paginas;
-        this._editorial = editorial;
         this._descripcion = descripcion;
         this._anhoPublicacion = anhoPublicacion;
-        this._imagen = imagen;
+        this._portada = portada;
     }
 
     public get id(): string {
@@ -37,11 +36,11 @@ export class Libro {
     public set titulo(value: string) {
         this._titulo = value;
     }
-    public get autor(): Autor {
-        return this._autor;
+    public get autores(): Autor[] {
+        return this._autores;
     }
-    public set autor(value: Autor) {
-        this._autor = value;
+    public set autores(value: Autor[]) {
+        this._autores = value;
     }
     public get genero(): string {
         return this._genero;
@@ -54,6 +53,18 @@ export class Libro {
     }
     public set paginas(value: number) {
         this._paginas = value;
+    }
+    public get createdAt(): string {
+        return this._createdAt;
+    }
+    public set createdAt(value: string) {
+        this._createdAt = value;
+    }
+    public get lastModified(): string {
+        return this._lastModified;
+    }
+    public set lastModified(value: string) {
+        this._lastModified = value;
     }
     public get editorial(): string {
         return this._editorial;
@@ -73,11 +84,11 @@ export class Libro {
     public set anhoPublicacion(value: number) {
         this._anhoPublicacion = value;
     }
-    public get imagen(): string {
-        return this._imagen;
+    public get portada(): string {
+        return this._portada;
     }
-    public set imagen(value: string) {
-        this._imagen = value;
+    public set portada(value: string) {
+        this._portada = value;
     }
 
 }

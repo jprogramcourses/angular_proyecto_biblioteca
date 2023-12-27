@@ -2,6 +2,7 @@ export class Autor {
 
     private _id: string;
     private _nombre: string;
+    private _apellidos: string;
     private _nacionalidad: string;
 
     constructor(nombre: string){
@@ -14,11 +15,17 @@ export class Autor {
     public set id(value: string) {
         this._id = value;
     }
-    public get nombre_1(): string {
+    public get nombre(): string {
         return this._nombre;
     }
-    public set nombre_1(value: string) {
+    public set nombre(value: string) {
         this._nombre = value;
+    }
+    public get apellidos(): string {
+        return this._apellidos;
+    }
+    public set apellidos(value: string) {
+        this._apellidos = value;
     }
     public get nacionalidad(): string {
         return this._nacionalidad;

@@ -1,6 +1,6 @@
 <div class="container mt-5">
 
-  <app-slideshow [libros] = "libros"></app-slideshow>
+  <app-slideshow [libros] = "librosList"></app-slideshow>
 
   </div>
 
@@ -17,9 +17,13 @@
       </tr>
     </thead>
     <tbody>
-      <tr (click)="selectLibro(libro)" *ngFor="let libro of libros">
+      <tr (click)="selectLibro(libro)" *ngFor="let libro of librosList">
           <td>{{ libro.titulo }}</td>
-          <td>{{ libro.autor }}</td>
+          <td>
+            <ul>
+              <li *ngFor="let autor of libro.autores">{{autor.nombre}} {{autor.apellidos}}</li>
+            </ul>
+          </td>
           <td>{{ libro.anhoPublicacion }}</td>
           <td>{{ libro.genero }}</td>
           <td>{{ libro.editorial }}</td>
