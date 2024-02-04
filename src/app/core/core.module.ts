@@ -9,6 +9,7 @@ import { LibrosModule } from '../libros/libros.module';
 import { LoginModule } from '../login/login.module';
 import { HttpClientModule } from '@angular/common/http';
 import { UsuariosComponent } from './usuarios/usuarios.component';
+import { AutorModule } from '../autor/autor.module';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { UsuariosComponent } from './usuarios/usuarios.component';
     SharedModule,
     RouterModule,
     LibrosModule,
+    AutorModule,
     LoginModule,
     HttpClientModule
   ],

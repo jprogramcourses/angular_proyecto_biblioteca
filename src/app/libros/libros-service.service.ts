@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Libro } from './libro';
 import { Autor } from '../autor/autor';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { Observable, map } from 'rxjs';
+import { Observable, catchError, map, throwError } from 'rxjs';
+import Swal from 'sweetalert2';
 
 @Injectable({
   providedIn: 'root'
@@ -27,6 +28,44 @@ export class LibrosService {
     private router: Router
   ) { }
 
+  getLibro(id: string): Observable<Libro>{
+    console.log('getLibro, id: ', id);
+    
+    return this.httpClient.get(`${this.urlLibros}/${id}`).pipe(
+      map((lib: any) => {
+        console.log(lib);
+
+        let libro = this.mapLibro(lib);
+
+        console.log('getLibro service');
+        console.log(libro);
+        return libro;
+      })
+    );
+  }
+
+  private mapLibro(libroJson: any): Libro{
+    let libro: Libro = new Libro(
+      libroJson._titulo,
+      libroJson._genero,
+      libroJson._paginas,
+      libroJson._descripcion,
+      libroJson._anhoPublicacion,
+      libroJson._portada
+    );
+    libro.id = libroJson._id;
+    let autores: Autor[] = [];
+    let autor: Autor = new Autor(
+      libroJson._autores[0]._nombre
+    );
+    autor.id = libroJson._autores[0].id;
+    autor.apellidos = libroJson._autores[0]._apellidos;
+    autor.nacionalidad = libroJson._autores[0]._nacionalidad;
+    autores.push(autor);
+    libro.autores = autores;
+    return libro;
+  }
+
   getLibros(): Observable<Libro[]>{
 
     let libros: Libro[] = [];
@@ -43,18 +82,63 @@ export class LibrosService {
             librosList[i]._anhoPublicacion,
             librosList[i]._portada
           );
+          libro.id = librosList[i]._id;
           libros.push(libro);
         }
-        
         return libros;
       })
     );
   }
 
-  createLibro(libro: Libro): Observable<Libro>{
+  createLibro(libro: Libro, portada: File): Observable<Libro>{
     console.log('Libro service: ');
     console.log(libro);
-    return this.httpClient.post<Libro>(this.urlLibros, libro);
+
+    console.log('Portada: ');
+    console.log(portada.type);
+    console.log('Portada de libro: ');
+    console.log(libro.portada);
+
+    // let formData = new FormData();
+    // formData.append("portada", portada);
+    // formData.append("titulo", libro.titulo);
+    // formData.append("anhoPublicacion", libro.anhoPublicacion.toString());
+    // formData.append("paginas", libro.paginas.toString());
+    // formData.append("createdAt", libro.createdAt);
+    // formData.append("lastModified", libro.lastModified);
+    // formData.append("editorial", libro.editorial);
+    // formData.append("descripcion", libro.descripcion);
+    // formData.append("genero", libro.genero);
+    
+
+    // const params = new HttpParams();
+    // params.append("titulo", libro.titulo)
+    //   .append("anhoPublicacion", libro.anhoPublicacion)
+    //   .append("paginas", libro.paginas)
+    //   .append("portada", portada);
+
+
+    // return this.httpClient.post<Libro>(`${this.urlLibros}/createWithFile`, formData).pipe(
+    return this.httpClient.post<Libro>(this.urlLibros, libro).pipe(
+      map((response: any) => response.libro as Libro),
+      catchError(this.handleError)
+    );
+  }
+
+  uploadPortada(portada: File, id:string): Observable<Libro>{
+    let formData = new FormData();
+    formData.append("portada", portada);
+    formData.append("id", id);
+    return this.httpClient.post(`${this.urlLibros}/uploadPortada`, formData).pipe(
+      map((response: any) => response.libro as Libro),
+      catchError(this.handleError)
+    );
+  }
+
+  handleError(error: any){
+    let errMsg = (error.message) ? error.message : error.statur ? `${error.status} - ${error.statusText}` : 'Server error';
+    Swal.fire("Error: " + error.message);
+    return throwError(() => errMsg);
   }
 
 }

@@ -27,7 +27,8 @@ export class LibrosListComponent implements OnInit {
   }
 
   selectLibro(libro: Libro){
-    this.router.navigate(['/libro', libro.titulo]);
+    console.log('Libro: ', libro);
+    this.router.navigate(['/libro', libro.id]);
   }
 
 }

@@ -8,7 +8,7 @@ import { FormLibroComponent } from "./form-libro/form-libro.component";
 const libroRoutes: Routes = [
     {path: '', component: LibrosListComponent},
     {path: 'libros', component: LibrosListComponent},
-    {path: 'libro/:titulo', component: LibroDetalleComponent},
+    {path: 'libro/:id', component: LibroDetalleComponent},
     { path: 'nuevolibro', component: FormLibroComponent}
 ];
 

@@ -15,8 +15,9 @@
       </small>
     </div>
 
-  <div class="form-group row" formGroupName="autor">
+  <div class="form-group row mt-3" formGroupName="autor">
     <label>Autor</label>
+    <p class="text-danger">Configurar como un select en el que se muestren los autores ya creados (con una opción de Desconocido), y botón de crear nuevo autor</p>
     <div class="col-6">
       <label for="autor">Nombre</label>
       <input
@@ -40,18 +41,17 @@
       />
     </div>
   </div>
-    
 
     <div class="form-group g-3">
       <label for="genero">Género</label>
       <select class="form-control" id="genero" formControlName="genero">
         <option></option>
-        <option>Novela</option>
-        <option>Historia</option>
-        <option>Ciencia</option>
-        <option>Ciencia ficción</option>
-        <option>Poesía</option>
-        <option>Ensayo</option>
+        <option value="NOVELA">Novela</option>
+        <option value="HISTORIA">Historia</option>
+        <option value="CIENCIA">Ciencia</option>
+        <option value="CIENCIA_FICCION">Ciencia ficción</option>
+        <option value="POESIA">Poesía</option>
+        <option value="ENSAYO">Ensayo</option>
       </select>
     </div>
     <div class="form-group">
@@ -75,7 +75,7 @@
       </div>
       <div class="col-md-8">
         <label for="portada">Portada</label>
-        <input type="file" class="form-control" id="portada" placeholder="imagen portada" formControlName="imagen" />
+        <input (change)="seleccionarPortada($event)" type="file" class="form-control" id="portada" placeholder="imagen portada" formControlName="portada" />
       </div>
     </div>
 
@@ -172,4 +172,13 @@
       Crear
     </button>
   </form>
+
+  <pre>
+    Estado del formulario: {{libroForm.valid}}
+    <br>
+    Status: {{libroForm.status}}
+  </pre>
+
+  {{libroForm.value | json}}
+
 </div>
